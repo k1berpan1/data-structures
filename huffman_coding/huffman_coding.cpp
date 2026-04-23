@@ -106,7 +106,7 @@ struct Priorityqueue {
 
     void deletefirst() {
         if (head == nullptr) {
-            std::cout << "priority queue is alreade cleaned";
+            return;
         }
         else {
             Node* temp = head;
@@ -116,16 +116,13 @@ struct Priorityqueue {
         }
     }
     ~Priorityqueue() {
-        if (head == nullptr) {
-            std::cout << "priority queue is alreade cleaned" << std::endl;
-        }
+        if (head == nullptr) 
+            return;
+        
         else {
             while (head != nullptr) {
                 deletefirst();
             }
-            std::cout << "priority queue is cleaned" << std::endl;
-
-
         }
     }
 };
@@ -210,39 +207,6 @@ struct Hoffmantree {
         addres.pop_back();
         
 	}
-
-
-
-
-    //  void inorder(Node* find_node, Node* current, std::string &addres) {
-	// 	if (current == NULL) {
-    //         addres.pop_back();
-	// 		return;
-    //     }
-    //     if(find_node->letter == current->letter){
-    //         std::cout << " letter "<<current->letter << " addres "<< addres<<std::endl;
-    //         return;
-    //     }
-    //     else if(find_node->letter != current->letter && current->letter != NULL){
-    //         addres.pop_back();
-    //         return;
-    //     }
-    //     addres.append("0");
-	// 	inorder(find_node, current->left, addres);
-    //     if(current->priority == root->priority){
-    //         addres= "";
-    //     }
-    //     addres.append("1");
-    //     if(current->right->letter != find_node->letter && current->right->letter != NULL ){
-    //         addres.pop_back();
-    //         addres.pop_back();
-    //         return;
-    //     }
-    //     else{
-	// 	    inorder(find_node, current->right, addres);
-
-    //     }
-
 };
 
 
@@ -252,7 +216,6 @@ struct Nodetoarr{
 };
 
 int main() {
-    setlocale(LC_ALL, "RU");
     Priorityqueue pt;
     pt.push('a', 1);
     pt.push('b', 4);
@@ -268,14 +231,8 @@ int main() {
     {
         ht.push(queuetostring);
     }
-    //std::cout<<temp.sizeofqueue()<<std::endl;
+    
     countthenumoflet(stroka, temp);
-    // struct Node* temp_node;
-    // temp_node = temp.peek();
-    // std::cout<< "letter: "<< temp_node->letter<< " priority: "<< temp_node->priority<< std::endl;
-
-
-
     std::vector<Nodetoarr*> arrtoht;
     struct Node* temp_node;
     std::string addres;

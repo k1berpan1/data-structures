@@ -6,14 +6,12 @@ struct Node {
     int value;
 };
 
-
 struct Linkedlist {
 
 	struct Node* head = nullptr;
 
     void info_of_ll(){
 		if(!head){
-			std::cout<< "linked list is empty"<< std::endl;
 			return;
 		}
     	struct Node* temp_node = head;
@@ -24,7 +22,7 @@ struct Linkedlist {
     }
 	void find(std::string key) {
 		if (!head) 
-			std::cout << "linkedlist is empty" << std::endl;
+			return;
 		
 		else{
 			struct Node* temp_node = head;
@@ -63,7 +61,6 @@ struct Linkedlist {
 			return head;
 		}
 		if(!temp_node){
-			std::cout<< "there is no such element"<<std::endl;
 			return temp_node;
 		}
 		if(temp_node->key == key)
@@ -88,6 +85,6 @@ struct Linkedlist {
 			last = nullptr;
 		}
 		else 
-			std::cout << " ll is clear" << std::endl;
+			return;
 	}
 };

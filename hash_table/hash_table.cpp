@@ -35,15 +35,12 @@ struct hash_table{
 
     void delete_in_ht(std::string key){
         hash_table_array[hash_function(key)].delete_after(hash_table_array[hash_function(key)].head, "adc");
-        std::cout<<"element was deleted"<<std::endl;
     }
 };
 
 
 int main() { 
-	
-	setlocale(LC_ALL, "RU");
-    hash_table ht;
+	hash_table ht;
     ht.add_to_ht("adc", 3);
     ht.info_of_ht();
     ht.search_in_ht("adc");

@@ -35,16 +35,13 @@ struct AVL_tree{
 	void preodrder(Node* node) {
 		if (node == NULL)
 			return;
-
 		std::cout << node->key << std::endl;
-
 		preodrder(node->left);
-
 		preodrder(node->right);
 	}
 	auto find(int key) {
 		if (root == nullptr) {
-			std::cout << "Binary tree has already been cleared";
+			return;
 		}
 		else {
 			Node* temp = root;
@@ -58,20 +55,12 @@ struct AVL_tree{
 					temp = temp->right;
 
 				else {
-					//std::cout << "data: " << temp->data << std::endl;
 					return temp;
 				}
 			
 			}
-			std::cout << " Don't find" << std::endl;
-
-			
 		}
 	}
-
-
-	/*rotate*/
-
 
 	Node* llrotate(Node* node){
 		Node* temp = node->left->right;
@@ -83,7 +72,6 @@ struct AVL_tree{
 		return node;
 	}
 	Node* lrrotate(Node* node){
-		//std::cout<< "right child of left is heavy"<< std::endl;			
 		Node* temp_right_of_chosen = node->left->right->right;
 		Node* temp_future_left_child_of_chosen = node->left;
 		Node* temp_left_of_chosen = node->left->right->left;
@@ -118,7 +106,6 @@ struct AVL_tree{
 		node->right->left = temp_right_of_chosen;
 		return node;
 	}
-	/*rotate*/
 	Node* insert(Node *node, int key ){
 		if(root == NULL){
 			root = new Node(key); 
@@ -131,18 +118,15 @@ struct AVL_tree{
 			node->left = insert(node->left, key); 
 		else if (key > node->key) 
 			node->right = insert(node->right, key); 
-		else // Equal keys are not allowed in BST 
+		else
 			return node; 
 
-		//std::cout<<"родитель"<< node->key<<std::endl;
 
 		int bf = balancefactor(node);
         if(bf == -1 || bf == 0 || bf==1 ){
-			//std::cout<<"all okey"<< std::endl;
 			return node;	
 		}
 		else if(bf<-1){
-			//less than 0: The node is "left heavy".
 			if(balancefactor(node->left) < 0){
 				node = llrotate(node);
 				return node;
@@ -153,23 +137,17 @@ struct AVL_tree{
 			}
 		}
 		else if(bf>1){
-            //more than 0: The node is "right heavy".
 			if(balancefactor(node->right) < 0){
-				//std::cout<< "left child of right is heavy"<< std::endl;
 				node = rlrotate(node);
 				return node;
 			}
 			else{
-				//std::cout<< "right child of right is heavy"<< std::endl;
 				node = rrrotate(node);	
 				return node;		
 			}
         }
 	}
-	Node* Delete(Node* node, int key){
-		
-		/*do smth when deleted node is root*/
-		
+	Node* Delete(Node* node, int key){		
 		if (node == NULL) 
         	return NULL; 
 		if(key == root->key && ((root->left == nullptr)&&(root->right == nullptr)) ){
@@ -237,12 +215,10 @@ struct AVL_tree{
 		}
 		int bf = balancefactor(node);
         if(bf == -1 || bf == 0 || bf==1 ){
-			//std::cout<<"all okey"<< std::endl;
 			return node;	
 
 		}
 		else if(bf<-1){
-			//less than 0: The node is "left heavy".
 			if(balancefactor(node->left) < 0){
 				node = llrotate(node);
 				return node;
@@ -253,21 +229,16 @@ struct AVL_tree{
 			}
 		}
 		else if(bf>1){
-            //more than 0: The node is "right heavy".
 			if(balancefactor(node->right) < 0){
-				//std::cout<< "left child of right is heavy"<< std::endl;
 				node = rlrotate(node);
 				return node;
 			}
 			else{
-				//std::cout<< "right child of right is heavy"<< std::endl;
 				node = rrrotate(node);	
 				return node;		
 			}
         }
-		
 		return node;
-
 	}
 
 
@@ -283,7 +254,7 @@ struct AVL_tree{
 	
 	~AVL_tree() {
 		if (root == nullptr) {
-			std::cout << "bt is empty";
+			return;
 		}
 		else {
 			deletebt(root);
@@ -291,12 +262,8 @@ struct AVL_tree{
 	}
 };
 
-int main() {
-	setlocale(LC_ALL, "RU");
-	
-	AVL_tree bt;
-	
-	
+int main() {	
+	AVL_tree bt;	
 	bt.insert(bt.root, 1);
 	bt.insert(bt.root, 2);
 	bt.insert(bt.root, 3);
@@ -304,6 +271,4 @@ int main() {
 	bt.insert(bt.root, 5);
 	bt.insert(bt.root, 6);
 	std::cout<<bt.root->key<< std::endl;
-
-	
 }		

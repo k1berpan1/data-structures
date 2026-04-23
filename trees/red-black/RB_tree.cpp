@@ -308,7 +308,6 @@ struct RBtree {
 		if(current->color == black && sibling->color == red){
 			sibling->color = black;
 			current->dad->color = red;
-			std::cout<<"d";
 			if(is_it_left(current))
 				rrrotate(current->dad);				
 			else
@@ -419,7 +418,6 @@ struct RBtree {
 	
 	void delete_zero_step(Node* node, int key){		
 		if (root == nullptr){
-			std::cout << "Binary tree has already been cleared";
 			return;
 		} 
 		
@@ -431,18 +429,15 @@ struct RBtree {
 				current = current->right;	
 		}
 		if (current == nullptr){
-			std::cout << "ther isn't this element";
 			return;
 		} 
-		delete_first_step(current);
-		//	fixafterdelete(current);
-		
+		delete_first_step(current);		
 	}
 
 
 	~RBtree() {
 		if (root == nullptr) {
-			std::cout << "bt is empty";
+			return;
 		}
 		else {
 			deletebt(root);
@@ -451,7 +446,6 @@ struct RBtree {
 };
 
 int main() {
-	setlocale(LC_ALL, "RU");	
 	RBtree rb;
 	rb.insert(rb.root, 13);
 	rb.insert(rb.root, 8);

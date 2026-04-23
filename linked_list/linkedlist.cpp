@@ -14,7 +14,7 @@ struct Linkedlist {
 	struct Node* head = nullptr;
 	void get_info() {
 		if (head == nullptr) {
-			std::cout << "linkedlist is empty"<< std::endl;
+			return;
 		}
 		else {
 			struct Node* last = head;
@@ -30,7 +30,7 @@ struct Linkedlist {
 
 	void at(int data) {
 		if (head == nullptr) {
-			std::cout << "linkedlist is empty" << std::endl;
+			return;
 		}
 		
 		else{
@@ -39,7 +39,7 @@ struct Linkedlist {
 				last = last->next;
 
 			}
-			std::cout << "Íàéäåí ýëåìåíò " << last->data << " ñëåäóþùèé " << std::endl;
+			std::cout << last->data << std::endl;
 		}
 	}
 
@@ -64,9 +64,6 @@ struct Linkedlist {
 			new_node->next = nullptr;
 			
 		}
-	
-
-		//âûäåëÿòü ïàìÿòü íå â ñòýêå, à â êó÷å. ß ñîõðàíÿþ àäðåñ ïåðåìåííîé, êîòîðàÿ óäàëÿåòñÿ ïðè âûõîäå èç ôóíêöèè.
 
 	}
 	void pushfirst(int data) {
@@ -132,15 +129,13 @@ struct Linkedlist {
 			
 		}
 		else {
-			std::cout << "Ýëåìåíò óäàëåí" << std::endl;
+			return;
 		}
 	}
 };
 
 
 int main() { 
-	
-	setlocale(LC_ALL, "RU");
 	Linkedlist ll;
 	ll.pushback(4);
 	ll.pushback(5);
@@ -150,13 +145,6 @@ int main() {
 	ll.pushfirst(2);
 	ll.pushfirst(1);
 	ll.popafter();
-	//ll.deletefirst();
 	ll.at(6);
 	ll.get_info();
-	
-	//
-	//ll.popafter();
-	//ll.popafter();
-	//ll.popafter();
-	//ll.get_info();
 }
